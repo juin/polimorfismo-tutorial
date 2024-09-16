@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
+use App\Filament\Resources\UserResource\RelationManagers\CoordenadorsRelationManager;
 use App\Models\User;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Placeholder;
@@ -58,17 +59,13 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')
+                TextColumn::make('name')->label('Nome')
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('email')
                     ->searchable()
                     ->sortable(),
-
-                TextColumn::make('email_verified_at')
-                    ->label('Email Verified Date')
-                    ->date(),
             ])
             ->filters([
                 //
@@ -90,6 +87,13 @@ class UserResource extends Resource
             'index' => Pages\ListUsers::route('/'),
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            CoordenadorsRelationManager::class,
         ];
     }
 
