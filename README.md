@@ -13,7 +13,7 @@ Exemplificar o uso do conceito de “Polymorphic Relationships” do Laravel usa
 
 Definir as equipes de coordenação vinculadas a uma Cidade, Estado, Região ou País.
 
-- As tabelas de nosso projeto serão: Cidades, Estados, Regiões, Paises, Coordenadores
+- As tabelas de nosso projeto serão: Cargos, Cidades, Estados, Regiões, Paises, Coordenadores
 - Um usuário pode ser coordenador em uma ou mais instancias simultaneamente.
 
 obs: Não estou considerando as tabelas padrões do laravel: users, migrations, etc...
