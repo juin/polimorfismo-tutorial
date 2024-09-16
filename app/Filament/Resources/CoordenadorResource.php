@@ -41,6 +41,7 @@ class CoordenadorResource extends Resource
                     ->label('Usuário')
                     ->relationship('user', 'name'),
 
+                //Altera a consulta para exibir apenas os cargos ativos.
                 Select::make('cargo_id')
                     ->label('Cargo')
                     ->relationship(
