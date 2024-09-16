@@ -39,11 +39,13 @@ class UserResource extends Resource
                 TextInput::make('email')
                     ->required(),
 
-                DatePicker::make('email_verified_at')
-                    ->label('Email Verified Date'),
-
                 TextInput::make('password')
-                    ->required(),
+                    ->required()
+                    ->password(),
+
+                TextInput::make('password_confirmation')
+                    ->required()
+                    ->password()->same('password'),
 
                 Placeholder::make('created_at')
                     ->label('Created Date')

@@ -11,7 +11,7 @@ class Pais extends Model
 
     protected $fillable = ['nome'];
 
-    public function coordenadors(): MorphMany
+    public function coordenadores(): MorphMany
     {
         return $this->morphMany(Coordenador::class, 'coordenadorable');
 

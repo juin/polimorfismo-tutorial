@@ -15,7 +15,7 @@ class Cidade extends Model
         return $this->belongsTo(Estado::class, 'estado_id');
     }
 
-    public function coordenadors(): MorphMany
+    public function coordenadores(): MorphMany
     {
         return $this->morphMany(Coordenador::class, 'coordenadorable');
 

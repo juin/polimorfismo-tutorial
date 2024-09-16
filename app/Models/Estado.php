@@ -15,7 +15,7 @@ class Estado extends Model
         return $this->belongsTo(Pais::class, 'pais_id');
     }
 
-    public function coordenadors(): MorphMany
+    public function coordenadores(): MorphMany
     {
         return $this->morphMany(Coordenador::class, 'coordenadorable');
 

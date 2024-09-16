@@ -2,13 +2,13 @@
 
 namespace App\Filament\Resources\CidadesResource\Pages;
 
-use App\Filament\Resources\CidadesResource;
+use App\Filament\Resources\CidadeResource;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditCidades extends EditRecord
 {
-    protected static string $resource = CidadesResource::class;
+    protected static string $resource = CidadeResource::class;
 
     protected function getHeaderActions(): array
     {

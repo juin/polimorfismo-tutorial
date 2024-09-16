@@ -2,8 +2,8 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CidadesResource\Pages;
-use App\Models\Cidade;
+use App\Filament\Resources\EstadosResource\Pages;
+use App\Models\Estado;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -16,17 +16,19 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class CidadesResource extends Resource
+class EstadoResource extends Resource
 {
-    protected static ?string $model = Cidade::class;
+    protected static ?string $model = Estado::class;
 
-    protected static ?string $slug = 'cidades';
+    protected static ?string $slug = 'estados';
 
-    protected static ?string $label = 'Cidade';
+    protected static ?string $label = 'Estados';
 
-    protected static ?string $pluralLabel = 'Cidade';
+    protected static ?string $pluralLabel = 'Estado';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $navigationGroup = 'Locais';
 
     public static function form(Form $form): Form
     {
@@ -35,16 +37,21 @@ class CidadesResource extends Resource
                 TextInput::make('nome')
                     ->required(),
 
-               Select::make('estado_id')
-                   ->relationship('estado', 'nome'),
+                TextInput::make('sigla')
+                    ->length(2)
+                    ->required(),
+
+                Select::make('pais_id')
+                    ->label('País')
+                    ->relationship('pais', 'nome')->required(),
 
                 Placeholder::make('created_at')
                     ->label('Data/Hora Cadastro')
-                    ->content(fn(?Cidade $record): string => $record?->created_at?->diffForHumans() ?? '-'),
+                    ->content(fn(?Estado $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
                 Placeholder::make('updated_at')
                     ->label('Data/Hora Última Atualização')
-                    ->content(fn(?Cidade $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
+                    ->content(fn(?Estado $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
             ]);
     }
 
@@ -54,7 +61,9 @@ class CidadesResource extends Resource
             ->columns([
                 TextColumn::make('nome'),
 
-                TextColumn::make('estado.sigla'),
+                TextColumn::make('sigla'),
+
+                TextColumn::make('pais.nome'),
             ])
             ->filters([
                 //
@@ -73,9 +82,9 @@ class CidadesResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCidades::route('/'),
-            'create' => Pages\CreateCidades::route('/create'),
-            'edit' => Pages\EditCidades::route('/{record}/edit'),
+            'index' => Pages\ListEstados::route('/'),
+            'create' => Pages\CreateEstados::route('/create'),
+            'edit' => Pages\EditEstados::route('/{record}/edit'),
         ];
     }
 

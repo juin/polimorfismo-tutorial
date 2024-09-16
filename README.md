@@ -18,6 +18,12 @@ Definir as equipes de coordenação vinculadas a uma Cidade, Estado, Região ou 
 
 obs: Não estou considerando as tabelas padrões do laravel: users, migrations, etc...
 
+### Recursos utilizados no projeto
+
+- Relacionamento Polimórfico
+- Filtro da tabela usando relacionamento polimórfico
+- Customização do menu
+- Remoção widget padrão filament
 
 ## Links úteis
 
