@@ -23,14 +23,25 @@ class CoordenadorsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                //
+                MorphToSelect::make('coordenadorable')
+                    ->label('Local Coordenado')
+                    ->types([
+                        MorphToSelect\Type::make(Pais::class)
+                            ->titleAttribute('nome'),
+                        MorphToSelect\Type::make(Estado::class)
+                            ->titleAttribute('nome'),
+                        MorphToSelect\Type::make(Cidade::class)
+                            ->titleAttribute('nome'),
+                ]),
+                Forms\Components\Select::make('cargo_id')
+                    ->relationship('cargo', 'nome'),
             ]);
     }
 
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('cargo_id')
+            ->recordTitleAttribute('cargo.nome')
             ->columns([
                 Tables\Columns\TextColumn::make('cargo.nome'),
                 Tables\Columns\TextColumn::make('coordenadorable.nome')
@@ -64,12 +75,6 @@ class CoordenadorsRelationManager extends RelationManager
                                 fn (Builder $query, $id): Builder => $query->where('coordenadorable_id', '=', $id)
                             );
                     }),
-                Tables\Filters\SelectFilter::make('coordenadorable_type')
-                    ->options([
-                        Cidade::class => 'Cidade',
-                        Estado::class => 'Estado',
-                        Pais::class => 'País',
-                    ]),
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
