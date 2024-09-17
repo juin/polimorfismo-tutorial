@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\EstadoResource\RelationManagers\CoordenadoresRelationManager;
 use App\Filament\Resources\EstadosResource\Pages;
 use App\Models\Estado;
 use Filament\Forms\Components\Placeholder;
@@ -85,6 +86,13 @@ class EstadoResource extends Resource
             'index' => Pages\ListEstados::route('/'),
             'create' => Pages\CreateEstados::route('/create'),
             'edit' => Pages\EditEstados::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            CoordenadoresRelationManager::class,
         ];
     }
 

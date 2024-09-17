@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PaisesResource\Pages;
+use App\Filament\Resources\PaisResource\RelationManagers\CoordenadoresRelationManager;
 use App\Models\Pais;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
@@ -72,6 +73,13 @@ class PaisResource extends Resource
             'index' => Pages\ListPaises::route('/'),
             'create' => Pages\CreatePaises::route('/create'),
             'edit' => Pages\EditPaises::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            CoordenadoresRelationManager::class,
         ];
     }
 

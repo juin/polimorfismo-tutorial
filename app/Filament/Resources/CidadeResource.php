@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\CidadeResource\RelationManagers\CoordenadoresRelationManager;
 use App\Filament\Resources\CidadesResource\Pages;
 use App\Models\Cidade;
 use Filament\Forms\Components\Placeholder;
@@ -78,6 +79,13 @@ class CidadeResource extends Resource
             'index' => Pages\ListCidades::route('/'),
             'create' => Pages\CreateCidades::route('/create'),
             'edit' => Pages\EditCidades::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+          CoordenadoresRelationManager::class,
         ];
     }
 
