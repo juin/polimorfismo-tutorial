@@ -24,7 +24,7 @@ class PaisResource extends Resource
 
     protected static ?string $label = 'País';
 
-    protected static ?string $pluralLabel = 'Paises';
+    protected static ?string $pluralLabel = 'Países';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

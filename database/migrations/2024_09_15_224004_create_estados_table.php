@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('nome');
             $table->string('sigla');
-            $table->foreignId('pais_id');
+            $table->foreignId('pais_id')->constrained('paises');
             $table->timestamps();
         });
     }
