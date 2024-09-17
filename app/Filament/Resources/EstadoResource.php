@@ -22,9 +22,9 @@ class EstadoResource extends Resource
 
     protected static ?string $slug = 'estados';
 
-    protected static ?string $label = 'Estados';
+    protected static ?string $label = 'Estado';
 
-    protected static ?string $pluralLabel = 'Estado';
+    protected static ?string $pluralLabel = 'Estados';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
